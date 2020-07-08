@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.4"
+ruby "2.7.1"
 
 gem "rails", "~> 6.0.3", ">= 6.0.3.1"
 gem "pg", ">= 0.18", "< 2.0"
@@ -17,6 +17,9 @@ gem "kaminari"
 gem "date_validator"
 gem "valid_email2"
 gem "nokogiri"
+gem 'rubocop'  
+gem 'rubocop-rails'  
+gem 'rubocop-performance'  
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
