@@ -6,7 +6,7 @@ class Admin::StaffMembersController < Admin::Base
 
   def show
     staff_member = SraffMember.find(params[:id])
-    redirzect_to [ :edit, :admin, staff_member ]
+    redirect_to [ :edit, :admin, staff_member ]
   end
 
   def new
