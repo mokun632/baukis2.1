@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "職員による自分のアカウントの管理","ログイン前" do
+describe "職員による自分のアカウントの管理", "ログイン前" do
   include_examples "a protected singular staff controller", "staff/accounts"
 end
 
@@ -32,22 +32,22 @@ describe "職員による自分のアカウントの管理" do
     end
 
     example "セッションタイムアウト" do
-      travel_to Staff::Base::TIMEOUT.from_now.advance(seconds:1)
+      travel_to Staff::Base::TIMEOUT.from_now.advance(seconds: 1)
       get staff_account_url
       expect(response).to redirect_to(staff_login_url)
     end
   end
 
   describe "更新" do
-    let(:params_hash){
+    let(:params_hash) {
       attributes_for(:staff_member)
     }
-    let(:staff_member){
+    let(:staff_member) {
       create(:staff_member)
     }
 
     example "email属性を変更する" do
-      params_hash.merge!(email:"test@example.com")
+      params_hash.merge! (email: "test@example.com")
       patch staff_account_url,
       params: { id: staff_member.id, staff_member:params_hash }
       staff_member.reload
