@@ -20,7 +20,7 @@ class Staff::Base < ApplicationController
   end
 
   private def check_account
-    if current_staff_member && !current_staff_member.active?
+    if current_staff_member && current_staff_member.suspended?
       session.delete(:staff_member_id)
       flash.alert = "アカウントが無効になりました。"
       redirect_to :staff_root

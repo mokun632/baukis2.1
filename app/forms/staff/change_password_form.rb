@@ -2,7 +2,7 @@ class Staff::ChangePasswordForm
   include ActiveModel::Model
 
   attr_accessor :object, :current_password, :new_password,
-  :new_password_confirmation
+    :new_password_confirmation
   validates :new_password, presence: true, confirmation: true
 
   validate do

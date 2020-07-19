@@ -5,7 +5,7 @@ class Admin::Base < ApplicationController
 
   private def current_adminstrator
     if session[:adminstrator_id]
-      @current_adminstrator ||= 
+      @current_adminstrator ||=
         Adminstrator.find_by(id: session[:adminstrator_id])
     end
   end
@@ -20,7 +20,7 @@ class Admin::Base < ApplicationController
   end
 
   private def check_account
-    if current_adminstrator && !current_adminstrator.active?
+    if current_adminstrator && current_adminstrator.suspended?
       session.delete(:adminstrator_id)
       flash.alert = "アカウントが無効になりました。"
       redirect_to :admin_root
