@@ -2,7 +2,7 @@ class Staff::CustomerForm
   include ActiveModel::Model
 
   attr_accessor :customer
-  delegate :persisted?, to: :customer
+  delegate :persisted?, :save, to: :customer
 
   def initialize(customer = nil)
     @customer = customer
@@ -19,14 +19,6 @@ class Staff::CustomerForm
     customer.work_address.assign_attributes(work_address_params)
   end
 
-  def save
-    ActiveRecord::Base.transaction do
-      customer.save!
-      customer.home_address.save!
-      customer.work_address.save!
-    end
-  end
-
   private def customer_params
     @params.require(:customer).permit(
       :email, :password,
@@ -37,7 +29,7 @@ class Staff::CustomerForm
 
   private def home_address_params
     @params.require(:home_address).permit(
-      :postal_code, :prefecture, :city, :address1, :address2,
+      :postal_code, :prefecture, :city, :address1, :address2
     )
   end
 
