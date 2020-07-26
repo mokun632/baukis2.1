@@ -12,7 +12,7 @@ shared_examples "a protected admin controller" do |controller|
       expect(response).to redirect_to(admin_login_url)
     end
   end
-  
+
   describe "#show" do
     example "ログインフォームにリダイレクト" do
       get url_for(args.merge(action: :show, id: 1))

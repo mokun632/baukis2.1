@@ -1,6 +1,6 @@
 class StaffMember < ApplicationRecord
   include EmailHolder
-  include StringNormalizer
+  include PersonalNameHolder
   include PasswordHolder
 
   has_many :events, class_name: "StaffEvent", dependent: :destroy
@@ -19,7 +19,7 @@ class StaffMember < ApplicationRecord
   }
 
   def active?
-    !suspended? && start_date <= Date.today &&
+    !suspended && start_date <= Date.today &&
     (end_date.nil? || end_date > Date.today)
   end
 end

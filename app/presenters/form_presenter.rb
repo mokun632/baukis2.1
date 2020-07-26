@@ -12,7 +12,7 @@ class FormPresenter
 
   def notes
     markup(:div, class: "notes") do |m|
-      m.sapn "*", class: "mark"
+      m.span "*", class: "mark"
       m.text "印の付いた項目は入力必須です。"
     end
   end
@@ -59,7 +59,7 @@ class FormPresenter
     end
   end
 
-  private def decorated_label(name, label_text, options = {})
+  def decorated_label(name, label_text, options = {})
     label(name, label_text, class: options[:required] ? "required" : nil)
   end
 end

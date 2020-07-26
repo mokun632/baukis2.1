@@ -11,7 +11,7 @@ class StaffEventPresenter < ModelPresenter
       end
       m.td description
       m.td(class: "date") do
-        m.text occurred_at.strftime("%Y/%m%d %H:%M:%S")
+        m.text occurred_at.strftime("%Y/%m/%d %H:%M:%S")
       end
     end
   end

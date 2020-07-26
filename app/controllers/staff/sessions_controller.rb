@@ -37,7 +37,6 @@ class Staff::SessionsController < Staff::Base
   private def login_form_params
     params.require(:staff_login_form).permit(:email, :password)
   end
-  
 
   def destroy
     if current_staff_member
